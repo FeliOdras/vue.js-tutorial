@@ -31,13 +31,14 @@
           <ul v-for="size in sizes">
             <li class="box">{{ size }}</div>
             </ul>
-            <button>Add to cart</button>
+            <button v-on:click="cart +=  1">Add to cart</button>
             <div class="cart">Cart ({{cart}})</div>
         </div>
+        <footer>
+            Created by <a :href="link" target="_blank">odras</a>
+        </footer>
       </div>
-      <footer>
-        Created by <a v-bind:href="link" target="_blank">odras</a>
-      </footer>
+      
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="assets/js/main.js"></script>
