@@ -21,7 +21,11 @@
           <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
           <p v-else>Out of stock</p>
           <p v-show="onSale">OnSale</p>
+          <ul>
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
         </div>
+        <div v-for="variant in variants"></div>
       </div>
       <footer>
         Created by <a v-bind:href="link" target="_blank">odras</a>
