@@ -6,6 +6,7 @@ const app = new Vue({
     image: "./assets/img/vmSocks-green-onWhite.jpg",
     link: "https://me.odras.de",
     inventory: 100,
-    onSale: true
+    onSale: true,
+    details: ["80% cotton", "20% polyester", "Gender-neutral"]
   }
 });
