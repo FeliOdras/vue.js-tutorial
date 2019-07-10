@@ -17,28 +17,37 @@
         <div class="product-info">
           <h1>{{ product }}</h1>
           <p>{{ description }}</p>
-          <p v-if="inventory > 10">In stock</p>
-          <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
-          <p v-else>Out of stock</p>
-          <p v-show="onSale">OnSale</p>
+          <p v-if="inStock">In stock</p>
+          <p v-else :class="{ strokeThrough: !inStock }">Out of stock</p>
+          <p v-show="onSale && inStock">OnSale</p>
 
           <ul>
             <li v-for="detail in details">{{ detail }}</li>
           </ul>
-          <div v-for="variant in variants" :key="variant.variantID">
-            <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+          <div
+            v-for="variant in variants"
+            :key="variant.variantID"
+            class="color-box"
+            :style="{backgroundColor: variant.variantColor}"
+            @mouseover="updateProduct(variant.variantImage)"
+          ></div>
+          <div v-for="size in sizes">
+            <div class="color-box">{{ size }}</div>
           </div>
-          <ul v-for="size in sizes">
-            <li class="box">{{ size }}</div>
-            </ul>
-            <button @click="addToCart">Add to cart</button>
-            <div class="cart">Cart ({{cart}})</div>
+          <button
+            @click="addToCart"
+            :disabled="!inStock"
+            :class="{ disabledButton: !inStock }"
+          >
+            Add to cart
+          </button>
+          <button @click="removeFromCart">
+            Remove from cart
+          </button>
+          <div class="cart">Cart ({{ cart }})</div>
         </div>
-        <footer>
-            Created by <a :href="link" target="_blank">odras</a>
-        </footer>
+        <footer>Created by <a :href="link" target="_blank">odras</a></footer>
       </div>
-      
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="assets/js/main.js"></script>

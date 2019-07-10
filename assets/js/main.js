@@ -5,7 +5,7 @@ const app = new Vue({
     description: "These are nice and warm socks.",
     image: "./assets/img/vmSocks-green-onWhite.jpg",
     link: "https://me.odras.de",
-    inventory: 100,
+    inStock: false,
     onSale: true,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
     variants: [
