@@ -17,6 +17,8 @@ const app = new Vue({
         variantID: 2235,
         variantColor: "blue"
       }
-    ]
+    ],
+    sizes: ["XL", "L", "M", "S", "XS"],
+    cart: 0
   }
 });
