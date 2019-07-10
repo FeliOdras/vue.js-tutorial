@@ -12,13 +12,18 @@
     <div id="app">
       <div class="product">
         <div class="product-image">
-          <img src="" />
+          <img v-bind:src="image" />
         </div>
         <div class="product-info">
           <h1>{{ product }}</h1>
           <p>{{ description }}</p>
+          <p v-if="inStock">In stock</p>
+          <p v-else>Out of stock</p>
         </div>
       </div>
+      <footer>
+        Created by <a v-bind:href="link" target="_blank">odras</a>
+      </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="assets/js/main.js"></script>

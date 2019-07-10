@@ -3,6 +3,8 @@ const app = new Vue({
   data: {
     product: "Socks",
     description: "These are nice and warm socks.",
-    image: "./assets/img/vmSocks-green-onWhite.jpg"
+    image: "./assets/img/vmSocks-green-onWhite.jpg",
+    link: "https://me.odras.de",
+    inStock: true
   }
 });
