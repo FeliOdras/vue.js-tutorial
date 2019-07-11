@@ -31,13 +31,17 @@ const app = new Vue({
     removeFromCart() {
       this.cart -= 1;
     },
-    updateProduct(variantImage) {
-      this.image = variantImage;
+    updateProduct(index) {
+      this.selectedVariant = index;
+      console.log(index);
     }
   },
   computed: {
     title() {
       return this.brand + " " + this.product;
+    },
+    image() {
+      return this.variants[this.selectedVariant].variantImage;
     }
   }
 });
