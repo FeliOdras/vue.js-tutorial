@@ -4,7 +4,7 @@ const app = new Vue({
     product: "Socks",
     brand: "Vue Mastery",
     description: "These are nice and warm socks.",
-    image: "./assets/img/vmSocks-green-onWhite.jpg",
+    selectedVariant: 0,
     link: "https://me.odras.de",
     inStock: true,
     onSale: true,
