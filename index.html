@@ -11,11 +11,7 @@
     <nav class="nav-bar"></nav>
     <div id="app">
       <div class="cart">Cart ({{ cart }})</div>
-      <product
-        :premium="premium"
-        @add-to-cart="updateCartAdd"
-        @remove-from-cart="updateCartRemove"
-      ></product>
+      <product :premium="premium" @add-to-cart="updateCartAdd"></product>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="assets/js/main.js"></script>

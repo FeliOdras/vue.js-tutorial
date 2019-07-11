@@ -49,9 +49,6 @@ Vue.component("product", {
     >
       Add to cart
     </button>
-    <button @click="removeFromCart">
-      Remove from cart
-    </button>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
@@ -86,9 +83,6 @@ Vue.component("product", {
     addToCart() {
       this.$emit("add-to-cart");
     },
-    removeFromCart() {
-      this.$emit("remove-from-cart");
-    },
     updateProduct(index) {
       this.selectedVariant = index;
       console.log(index);
@@ -121,14 +115,11 @@ const app = new Vue({
   el: "#app",
   data: {
     premium: true,
-    cart: 0
+    cart: []
   },
   methods: {
-    updateCartAdd() {
-      this.cart += 1;
-    },
-    updateCartRemove() {
-      this.cart -= 1;
+    updateCartAdd(id) {
+      this.cart.push(id);
     }
   }
 });
