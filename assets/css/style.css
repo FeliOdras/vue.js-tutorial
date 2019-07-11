@@ -36,7 +36,17 @@ img {
 .color-box {
   width: 40px;
   height: 40px;
-  margin-top: 5px;
+  margin: 3px;
+  display: inline-block;
+}
+.size {
+  display: flex;
+}
+.size-box {
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  border: 1px solid #ccc;
 }
 
 .cart {

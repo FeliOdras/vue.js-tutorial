@@ -35,12 +35,12 @@ Vue.component("product", {
     <div
       v-for="(variant, index) in variants"
       :key="variant.variantID"
-      class="color-box"
+      class="color-box "
       :style="{backgroundColor: variant.variantColor}"
       @mouseover="updateProduct(index)"
     ></div>
-    <div v-for="size in sizes">
-      <div class="color-box">{{ size }}</div>
+    <div class="size">
+      <div  v-for="size in sizes" class="size-box">{{ size }}</div>
     </div>
     <button
       @click="addToCart"
@@ -87,7 +87,7 @@ Vue.component("product", {
       this.$emit("add-to-cart");
     },
     removeFromCart() {
-      this.cart -= 1;
+      this.$emit("remove-from-cart");
     },
     updateProduct(index) {
       this.selectedVariant = index;
@@ -122,5 +122,13 @@ const app = new Vue({
   data: {
     premium: true,
     cart: 0
+  },
+  methods: {
+    updateCartAdd() {
+      this.cart += 1;
+    },
+    updateCartRemove() {
+      this.cart -= 1;
+    }
   }
 });
