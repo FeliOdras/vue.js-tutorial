@@ -34,5 +34,10 @@ const app = new Vue({
     updateProduct(variantImage) {
       this.image = variantImage;
     }
+  },
+  computed: {
+    title() {
+      return this.brand + " " + this.product;
+    }
   }
 });
