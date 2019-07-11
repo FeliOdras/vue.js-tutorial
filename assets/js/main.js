@@ -56,7 +56,7 @@ Vue.component("product", {
     >
       Remove from cart
     </button>
-    <product-review></product-review>
+    <product-review @review-submitted="addReview"></product-review>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
@@ -84,7 +84,8 @@ Vue.component("product", {
           variantQuantity: 0
         }
       ],
-      sizes: ["XL", "L", "M", "S", "XS"]
+      sizes: ["XL", "L", "M", "S", "XS"],
+      reviews: []
     };
   },
   methods: {
@@ -99,6 +100,9 @@ Vue.component("product", {
     },
     updateProduct(index) {
       this.selectedVariant = index;
+    },
+    addReview(productReview) {
+      this.reviews.push(productReview);
     }
   },
   computed: {
@@ -126,18 +130,18 @@ Vue.component("product", {
 
 Vue.component("product-review", {
   template: `
-  <form class="review-form">
+  <form class="review-form" @submit.prevent="onSubmit">
     <p>
       <label for="name">Name: </label>
       <input id="name" v-model="name"/>
     </p>
     <p>
       <label for="review">Review</label>
-      <textarea id="review"></textarea>
+      <textarea id="review" v-model="review"></textarea>
     </p>  
     <p>
       <label for="rating">Rating:</label>
-      <select id="rating">
+      <select id="rating" v-model.number="rating">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -145,12 +149,28 @@ Vue.component("product-review", {
         <option>5</option>
       </select>
     </p>
+    <input type="submit" value="Submit" />
   </form>
   `,
   data() {
     return {
-      name: null
+      name: null,
+      review: null,
+      rating: null
     };
+  },
+  methods: {
+    onSubmit() {
+      let productReview = {
+        name: this.name,
+        review: this.review,
+        rating: this.rating
+      };
+      this.$emit("review-submitted", productReview);
+      this.name = null;
+      this.review = null;
+      this.rating = null;
+    }
   }
 });
 const app = new Vue({
