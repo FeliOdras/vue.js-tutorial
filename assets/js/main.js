@@ -6,19 +6,20 @@ const app = new Vue({
     description: "These are nice and warm socks.",
     selectedVariant: 0,
     link: "https://me.odras.de",
-    inStock: true,
     onSale: true,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
     variants: [
       {
         variantID: 2234,
         variantColor: "green",
-        variantImage: "./assets/img/vmSocks-green-onWhite.jpg"
+        variantImage: "./assets/img/vmSocks-green-onWhite.jpg",
+        variantQuantity: 10
       },
       {
         variantID: 2235,
         variantColor: "blue",
-        variantImage: "./assets/img/vmSocks-blue-onWhite.jpg"
+        variantImage: "./assets/img/vmSocks-blue-onWhite.jpg",
+        variantQuantity: 0
       }
     ],
     sizes: ["XL", "L", "M", "S", "XS"],
@@ -38,10 +39,16 @@ const app = new Vue({
   },
   computed: {
     title() {
-      return this.brand + " " + this.product;
+      return `${this.brand} ${this.product}`;
     },
     image() {
       return this.variants[this.selectedVariant].variantImage;
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].variantQuantity;
+    },
+    isOnSale() {
+      return `Grab your ${this.brand} ${this.product} now for a special price`;
     }
   }
 });

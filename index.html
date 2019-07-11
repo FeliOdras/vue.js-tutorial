@@ -19,7 +19,7 @@
           <p>{{ description }}</p>
           <p v-if="inStock">In stock</p>
           <p v-else :class="{ strokeThrough: !inStock }">Out of stock</p>
-          <p v-show="onSale && inStock">OnSale</p>
+          <p v-show="onSale && inStock">{{ isOnSale }}</p>
 
           <ul>
             <li v-for="detail in details">{{ detail }}</li>
