@@ -38,35 +38,33 @@ Vue.component("product", {
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
-  `
-});
-
-const app = new Vue({
-  el: "#app",
-  data: {
-    product: "Socks",
-    brand: "Vue Mastery",
-    description: "These are nice and warm socks.",
-    selectedVariant: 0,
-    link: "https://me.odras.de",
-    onSale: true,
-    details: ["80% cotton", "20% polyester", "Gender-neutral"],
-    variants: [
-      {
-        variantID: 2234,
-        variantColor: "green",
-        variantImage: "./assets/img/vmSocks-green-onWhite.jpg",
-        variantQuantity: 10
-      },
-      {
-        variantID: 2235,
-        variantColor: "blue",
-        variantImage: "./assets/img/vmSocks-blue-onWhite.jpg",
-        variantQuantity: 0
-      }
-    ],
-    sizes: ["XL", "L", "M", "S", "XS"],
-    cart: 0
+  `,
+  data() {
+    return {
+      product: "Socks",
+      brand: "Vue Mastery",
+      description: "These are nice and warm socks.",
+      selectedVariant: 0,
+      link: "https://me.odras.de",
+      onSale: true,
+      details: ["80% cotton", "20% polyester", "Gender-neutral"],
+      variants: [
+        {
+          variantID: 2234,
+          variantColor: "green",
+          variantImage: "./assets/img/vmSocks-green-onWhite.jpg",
+          variantQuantity: 10
+        },
+        {
+          variantID: 2235,
+          variantColor: "blue",
+          variantImage: "./assets/img/vmSocks-blue-onWhite.jpg",
+          variantQuantity: 0
+        }
+      ],
+      sizes: ["XL", "L", "M", "S", "XS"],
+      cart: 0
+    };
   },
   methods: {
     addToCart() {
@@ -94,4 +92,8 @@ const app = new Vue({
       return `Grab your ${this.brand} ${this.product} now for a special price`;
     }
   }
+});
+
+const app = new Vue({
+  el: "#app"
 });
