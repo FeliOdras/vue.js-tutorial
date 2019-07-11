@@ -52,7 +52,6 @@ Vue.component("product", {
     <button @click="removeFromCart">
       Remove from cart
     </button>
-    <div class="cart">Cart ({{ cart }})</div>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
@@ -80,13 +79,12 @@ Vue.component("product", {
           variantQuantity: 0
         }
       ],
-      sizes: ["XL", "L", "M", "S", "XS"],
-      cart: 0
+      sizes: ["XL", "L", "M", "S", "XS"]
     };
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit("add-to-cart");
     },
     removeFromCart() {
       this.cart -= 1;
@@ -122,6 +120,7 @@ Vue.component("product", {
 const app = new Vue({
   el: "#app",
   data: {
-    premium: true
+    premium: true,
+    cart: 0
   }
 });
