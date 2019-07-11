@@ -16,7 +16,7 @@ Vue.component("product", {
     <p v-if="inStock">In stock</p>
     <p v-else :class="{ strokeThrough: !inStock }">Out of stock</p>
     <p v-show="onSale && inStock">{{ isOnSale }}</p>
-    <p>User is premium: {{premium}}</p>
+    <p>Shipping: {{ shipping }}</p>
 
     <ul>
       <li v-for="detail in details">{{ detail }}</li>
@@ -97,6 +97,13 @@ Vue.component("product", {
     },
     isOnSale() {
       return `Grab your ${this.brand} ${this.product} now for a special price`;
+    },
+    shipping() {
+      if (this.premium) {
+        return "Free";
+      } else {
+        return "2.99";
+      }
     }
   }
 });
