@@ -49,6 +49,11 @@ Vue.component("product", {
     >
       Add to cart
     </button>
+    <button
+      @click="removeFromCart"
+    >
+      Remove from cart
+    </button>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
