@@ -1,3 +1,5 @@
+Vue.config.devtools = true;
+
 Vue.component("product-details", {
   props: {
     details: {
@@ -54,6 +56,7 @@ Vue.component("product", {
     >
       Remove from cart
     </button>
+    <product-review></product-review>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
 </div>
@@ -121,6 +124,35 @@ Vue.component("product", {
   }
 });
 
+Vue.component("product-review", {
+  template: `
+  <form class="review-form">
+    <p>
+      <label for="name">Name: </label>
+      <input id="name" v-model="name"/>
+    </p>
+    <p>
+      <label for="review">Review</label>
+      <textarea id="review"></textarea>
+    </p>  
+    <p>
+      <label for="rating">Rating:</label>
+      <select id="rating">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </p>
+  </form>
+  `,
+  data() {
+    return {
+      name: null
+    };
+  }
+});
 const app = new Vue({
   el: "#app",
   data: {
