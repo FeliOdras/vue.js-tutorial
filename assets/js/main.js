@@ -56,6 +56,17 @@ Vue.component("product", {
     >
       Remove from cart
     </button>
+    <div>
+      <h2>Reviews</h2>
+      <p>There are no reviews yet</p>
+      <ul>
+        <li v-for="review in reviews">
+          <p>Name:<br /> {{review.name}}</p>
+          <p>Review: <br /> {{review.review}}<p>
+          <p>Rating: {{review.rating}}
+        </li>
+      </ul>
+    </div>
     <product-review @review-submitted="addReview"></product-review>
   </div>
   <footer>Created by <a :href="link" target="_blank">odras</a></footer>
