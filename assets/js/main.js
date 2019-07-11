@@ -1,3 +1,46 @@
+Vue.component("product", {
+  template: `
+  <div class="product">
+  <div class="product-image">
+    <img v-bind:src="image" />
+  </div>
+  <div class="product-info">
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <p v-if="inStock">In stock</p>
+    <p v-else :class="{ strokeThrough: !inStock }">Out of stock</p>
+    <p v-show="onSale && inStock">{{ isOnSale }}</p>
+
+    <ul>
+      <li v-for="detail in details">{{ detail }}</li>
+    </ul>
+    <div
+      v-for="(variant, index) in variants"
+      :key="variant.variantID"
+      class="color-box"
+      :style="{backgroundColor: variant.variantColor}"
+      @mouseover="updateProduct(index)"
+    ></div>
+    <div v-for="size in sizes">
+      <div class="color-box">{{ size }}</div>
+    </div>
+    <button
+      @click="addToCart"
+      :disabled="!inStock"
+      :class="{ disabledButton: !inStock }"
+    >
+      Add to cart
+    </button>
+    <button @click="removeFromCart">
+      Remove from cart
+    </button>
+    <div class="cart">Cart ({{ cart }})</div>
+  </div>
+  <footer>Created by <a :href="link" target="_blank">odras</a></footer>
+</div>
+  `
+});
+
 const app = new Vue({
   el: "#app",
   data: {
