@@ -10,7 +10,7 @@
   <body>
     <nav class="nav-bar"></nav>
     <div id="app">
-      <div class="cart">Cart ({{ cart }})</div>
+      <div class="cart">Cart ({{ cart.length }})</div>
       <product :premium="premium" @add-to-cart="updateCartAdd"></product>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

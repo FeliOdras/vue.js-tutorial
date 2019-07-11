@@ -81,11 +81,10 @@ Vue.component("product", {
   },
   methods: {
     addToCart() {
-      this.$emit("add-to-cart");
+      this.$emit("add-to-cart", this.variants[this.selectedVariant].variantID);
     },
     updateProduct(index) {
       this.selectedVariant = index;
-      console.log(index);
     }
   },
   computed: {
