@@ -83,6 +83,12 @@ Vue.component("product", {
     addToCart() {
       this.$emit("add-to-cart", this.variants[this.selectedVariant].variantID);
     },
+    removeFromCart() {
+      this.$emit(
+        "remove-from-cart",
+        this.variants[this.selectedVariant].variantID
+      );
+    },
     updateProduct(index) {
       this.selectedVariant = index;
     }
@@ -119,6 +125,9 @@ const app = new Vue({
   methods: {
     updateCartAdd(id) {
       this.cart.push(id);
+    },
+    updateCartRemove(id) {
+      this.cart.pop(id);
     }
   }
 });
