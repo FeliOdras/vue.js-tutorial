@@ -58,7 +58,7 @@ Vue.component("product", {
     </button>
     <div>
       <h2>Reviews</h2>
-      <p>There are no reviews yet</p>
+      <p v-if="!reviews.length">There are no reviews yet</p>
       <ul>
         <li v-for="review in reviews">
           <p>Name:<br /> {{review.name}}</p>
@@ -148,7 +148,7 @@ Vue.component("product-review", {
     </p>
     <p>
       <label for="review">Review</label>
-      <textarea id="review" v-model="review"></textarea>
+      <textarea id="review" v-model="review" required></textarea>
     </p>  
     <p>
       <label for="rating">Rating:</label>
